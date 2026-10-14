@@ -1,13 +1,18 @@
 import React from "react";
 import File from "./File";
+import './App.css';
 
-function getFilesList () {
+function getFilesList() {
 
-  return(0);
+  return (0);
 }
 
-export default () => (
-  <div className="app">
-    <h1>WebFileSystem</h1>
-  </div>
-);
+function App() {
+  return (
+    <div className="app">
+      <h1>WebFileSystem</h1>
+    </div>
+  );
+}
+
+export default App // ça veut dire par défaut on renvoie App quand on appelle le fichier
