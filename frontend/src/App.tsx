@@ -1,18 +1,39 @@
-import React from "react";
-import File from "./File";
-import './App.css';
+import { useState } from "react";
 
-function getFilesList() {
+import FileContainer from "./FileContainer";
+import FilesList from "./FilesList";
 
-  return (0);
-}
+export type Language = "en" | "fr";
 
 function App() {
-  return (
-    <div className="app">
-      <h1>WebFileSystem</h1>
-    </div>
-  );
+    const [isNight, setIsNight] = useState(false);
+    const [language, setLanguage] = useState<Language>("en");
+    const [isMobile, setIsMobile] = useState(false);
+
+    function toggleTheme() {
+        setIsNight(previous => !previous);
+    }
+
+    function toggleLanguage() {
+        setLanguage(previous => previous === "en" ? "fr" : "en");
+    }
+
+    function toggleMobile() {
+        setIsMobile(previous => !previous);
+    }
+
+    return (
+        <FileContainer
+            isNight={isNight}
+            onToggleTheme={toggleTheme}
+            language={language}
+            onToggleLanguage={toggleLanguage}
+            isMobile={isMobile}
+            onToggleMobile={toggleMobile}
+        >
+            <FilesList language={language} />
+        </FileContainer>
+    );
 }
 
-export default App // ça veut dire par défaut on renvoie App quand on appelle le fichier
+export default App;
